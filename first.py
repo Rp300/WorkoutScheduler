@@ -19,7 +19,8 @@ class bodyType:
 
 class workoutSpecs:
 
-class
+class Krithi:
+    print("i have a big schlong")
 
 p1 = User()
 print(p1.x)
