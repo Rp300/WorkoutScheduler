@@ -2,6 +2,7 @@ import sqlite3
 import time
 import datetime
 import random
+import first
 
 
 conn = sqlite3.connect('user.db')
@@ -27,12 +28,16 @@ def dynamic_data_entry(name, classes):
 		(keyword, major))
 	conn.commit()
 
-create_table()
+#create_table()
 #data_entry() 
+#courses = ["cs","math","chem", "physics","english","apush","apug"]
+#sch = new schedule(courses)
+#pat = new User("pranay", sch)
+dynamic_data_entry("rohan", "chem")
 
 
-for i in range(10):
-	dynamic_data_entry("rohan", "chem")
-	time.sleep(1)
+# for i in range(10):
+# 	dynamic_data_entry("rohan", "chem")
+# 	time.sleep(1)
 c.close()
 conn.close()

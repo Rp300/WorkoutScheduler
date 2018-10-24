@@ -1,8 +1,15 @@
 class User:
+    myName = ""
     myCourses = None
     myBodyType = None
     myWorkoutSpecs = None
-    def __init__(self, courses, bodyType, workoutSpecs):
+
+    def __init__(self, name, courses):
+        self.myName = name
+        self.myCourses = courses
+
+    def __init__(self, name, courses, bodyType, workoutSpecs):
+        self.myName = name
         self.myCourses = courses
         self.myBodyType = bodyType
         self.myWorkoutSpecs = workoutSpecs
@@ -47,3 +54,14 @@ class course:
         self.courseName = name
         self.courseStartTime = startTime
         self.courseEndTime = endTime
+
+    def __init__(self, name):
+        courseName = name
+
+    def getName():
+        return courseName
+
+
+
+#sch = new schedule("cs","math","chem", "physics","english","apush","apug")
+#pat = new User("pranay", sch)
