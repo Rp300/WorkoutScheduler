@@ -1,18 +1,15 @@
 class User:
     myName = ""
-    myCourses = None
+    mySchedule = None
     myBodyType = None
     myWorkoutSpecs = None
 
-    def __init__(self, name, courses):
+    def __init__(self, name, schedule, bodyType=None, workoutSpecs=None):
         self.myName = name
-        self.myCourses = courses
-
-    def __init__(self, name, courses, bodyType, workoutSpecs):
-        self.myName = name
-        self.myCourses = courses
+        self.mySchedule = schedule
         self.myBodyType = bodyType
         self.myWorkoutSpecs = workoutSpecs
+
 class schedule:
     courseList = []
     def __init__(self,cList):
@@ -49,17 +46,16 @@ class course:
     courseName = ""
     courseStartTime = 0
     courseEndTime = 0
+    courseDOW = ""
     
-    def __init__(self, name, startTime, endTime):
+    def __init__(self, name, startTime=None, endTime=None, daysOfWeek=None):
         self.courseName = name
         self.courseStartTime = startTime
         self.courseEndTime = endTime
+        self.courseDOW = daysOfWeek
 
-    def __init__(self, name):
-        courseName = name
-
-    def getName():
-        return courseName
+    def getName(self):
+        return self.courseName
 
 
 
