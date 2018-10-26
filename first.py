@@ -16,10 +16,10 @@ class User:
     
     def __str__(self):
         return(self.myName + " " + str(self.mySchedule))
-    @classmethod
+
     def getSchedule(self):
         return self.mySchedule
-    @classmethod
+
     def getName(self):
         return self.myName
 
@@ -27,10 +27,10 @@ class schedule:
     courseList = []
     def __init__(self,cList):
         self.courseList = cList
-    @classmethod
+
     def addCourse(self,c):
         self.courseList.append(c)
-    @classmethod
+
     def removeCourse(self, c):
         self.courseList.remove(c)
 
@@ -75,7 +75,7 @@ class course:
         self.courseStartTime = startTime
         self.courseEndTime = endTime
         self.courseDOW = daysOfWeek
-    @staticmethod
+
     def getName(self):
         return(self.courseName)
 
@@ -90,5 +90,7 @@ s = schedule(courses)
 pat = User("pranay", s)
 
 beta = datetime.date
-print(str(c))
+print(s)
+s.addCourse(course("English"))
+print(pat.getName())
 
