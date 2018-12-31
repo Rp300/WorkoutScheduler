@@ -19,6 +19,28 @@ def main():
     service = build('calendar', 'v3', http=creds.authorize(Http()))
 
 
+    currDateTime = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+    # school starts at this date time
+    schoolStart = datetime.datetime(2019,1,13,23,59,59) #creates a datetime object for (Year,month,day,hour,minute,second)
+    minTim = schoolStart
+    # minTim = datetime.datetime.today()
+    maxTim = minTim + datetime.timedelta(weeks=1)
+    minTim = minTim.isoformat()+ 'Z'
+    maxTim = maxTim.isoformat()+ 'Z'
+
+
+    #querys datta from user google calendar 
+    events_result = service.events().list(calendarId='primary', timeMin= minTim, timeMax= maxTim,
+                                        maxResults=30, singleEvents=True,
+                                        orderBy='startTime').execute()
+    events = events_result.get('items', [])
+
+    if not events:
+        print('No upcoming events found.')
+    for thisEvent in events:
+        print(event.getDateTime(thisEvent))
+
+
 
 # class schedule:
 #     eventList = []
@@ -37,24 +59,33 @@ def main():
 #                 s = s + event.getName() + " from " + str(event.getTime()[0]) + " to " + str(event.getTime()[1])
 #         return s
 
-class event:
-
+class event: 
     def __init__(self, name, startTime, endTime):
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
-    def getName(self):
-        return self.name
     @staticmethod
-    #returns a dict of date of event and start and end times
+    def getName(event):
+        return event['summary']
+    @staticmethod
+    #returns a hashmap of the date of event and start and end times
+    #the date, start, and end time are hashmaps as well
+
+    #for example if my hash is called dict -> access the month by --> dict['date']['year']
+    #                                      -> access the end hour --> dict['endTime']['hour']
+    
     def getDateTime(event):
         start = event['start'].get('dateTime').split("T")[1].split("-")[0].split(':')
         end = event['end'].get('dateTime').split("T")[1].split("-")[0].split(':')
         date = event['start'].get('dateTime').split("T")[0].split("-")
-        
+
         startDict = {'hour': int(start[0]), 'minute': int(start[1])}
         endDict = {'hour': int(end[0]), 'minute': int(end[1])}
         dateDict = {'year': int(date[0]), 'month': int(date[1]), 'day': int(date[2])}
 
         myDict = {'date': dateDict, 'startTime': startDict, 'endTime': endDict}
-        
+        return myDict
+
+if __name__ == '__main__':
+    main()
+
