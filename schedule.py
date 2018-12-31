@@ -29,7 +29,8 @@ def main():
     maxTim = maxTim.isoformat()+ 'Z'
 
 
-    #querys datta from user google calendar 
+    #querys data from user google calendar 
+    #timeMin and timeMax are the upper and lower bounds of the search
     events_result = service.events().list(calendarId='primary', timeMin= minTim, timeMax= maxTim,
                                         maxResults=30, singleEvents=True,
                                         orderBy='startTime').execute()
