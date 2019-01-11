@@ -1,5 +1,5 @@
 # WorkoutScheduler
-Program to analyze a group or a single person's schedule and determine optimal workout times that fit into their schedules
+Application created to analyze one or several user's schedules through their google calendar data to determine optimal workout times that fit into their schedules
 
 
 #Google api help
